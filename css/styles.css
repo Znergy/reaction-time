@@ -29,3 +29,7 @@ p {
   margin-right: auto;
   background-color: #ccc;
 }
+
+.speed-text {
+  font-size: 35px;
+}

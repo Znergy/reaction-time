@@ -167,6 +167,64 @@
 
 /*** 5b. this will build on our prior code and track how quickly the user taps the box, using a method called Date.now() ***/
 
+//var timeCreated, timeClicked, userSpeed;
+//
+//function showBox() {
+//  var random = Math.random();
+//  random = random * 5000;
+//  random = Math.floor(random);
+//
+//  setTimeout(function() {
+//    $("#box").show();
+//    timeCreated = Date.now(); // set box creation time
+//  }, random);
+//}
+//
+//$(document).ready(function() {
+//  $("#box").on('click', function() {
+//    $(this).hide();
+//    
+//    timeClicked = Date.now(); // set user click time
+//    
+//    userSpeed = (timeClicked - timeCreated) / 1000;
+//    alert(userSpeed); // print
+//    showBox(); // create another box
+//  });
+//});
+//
+//showBox(); // create inital box
+
+
+/*** 6a. this will add to our previous code, but instead of alerting the user with his speed of click, we are going to add text to the screen, and display the user speed ***/
+
+//var timeCreated; var timeClicked; var userSpeed;
+//
+//function showBox() {
+//  
+//  var random = Math.random();
+//  random = random * 5000;
+//  random = Math.floor(random);
+//
+//  setTimeout(function() {
+//    document.getElementById("box").style.display="block";
+//    timeCreated = Date.now(); // this tracks initial creation
+//  }, random);
+//}
+//
+//document.getElementById("box").onclick = function() {
+//  this.style.display="none";
+//  timeClicked = Date.now(); // this tracks user click time
+//  userSpeed = (timeClicked - timeCreated) / 1000;
+//  // saves time difference and changes from milisecs to secs
+//  
+//  document.getElementById("speedText").innerHTML = "Your speed was, " + userSpeed + " seconds.";
+//  showBox();
+//}
+//
+//showBox();
+
+/*** 6b. this will add to our previous code, but instead of alerting the user with his speed of click, we are going to add text to the screen, and display the user speed ***/
+
 var timeCreated, timeClicked, userSpeed;
 
 function showBox() {
@@ -176,7 +234,7 @@ function showBox() {
 
   setTimeout(function() {
     $("#box").show();
-    timeCreated = Date.now();
+    timeCreated = Date.now(); // set box creation time
   }, random);
 }
 
@@ -184,19 +242,16 @@ $(document).ready(function() {
   $("#box").on('click', function() {
     $(this).hide();
     
-    timeClicked = Date.now();
+    timeClicked = Date.now(); // set user click time
     
-    userSpeed = (timeCreated - timeClicked) / 1000;
-    alert(userSpeed);
-    showBox();
+    userSpeed = (timeClicked - timeCreated) / 1000;
+    
+    $("#speedText").text("Your speed was, " + userSpeed + " seconds.");
+    showBox(); // create another box
   });
 });
 
-showBox();
-
-
-
-
+showBox(); // create inital box
 
 
 
