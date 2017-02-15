@@ -1,4 +1,4 @@
-/*** Box hide/show, 'this' keyword in JavaScript ***/
+/*** 1. Box hide/show, 'this' keyword in JavaScript ***/
 
 //document.getElementById("box").onclick = function() {
 //  var showing = true;
@@ -11,7 +11,7 @@
 //  }
 //}
 
-/*** Box hide/show, 'this' keyword in JQuery ***/
+/*** 1. Box hide/show, 'this' keyword in JQuery ***/
 
 //$(document).ready(function() {
 //  $("div#box").on('click', function() {
@@ -26,7 +26,7 @@
 //  });
 //});
 
-/*** Box hide after 3 secs in JavaScript ***/
+/*** 2. Box hide after 3 secs in JavaScript ***/
 
 //document.getElementById("box").onclick = function () {
 //  setTimeout(function() {
@@ -34,7 +34,7 @@
 //  }, 3000);
 //}
 
-/*** Box hide after 3 secs in JQuery ***/
+/*** 2. Box hide after 3 secs in JQuery ***/
 
 //$(document).ready(function() {
 //  $("#box").on('click', function() {
@@ -44,7 +44,7 @@
 //  });
 //});
 
-/*** Box will show at a random time, between 0-5000 miliseconds in JavaScript ***/
+/*** 3. Box will show at a random time, between 0-5000 miliseconds in JavaScript ***/
 
 //var random = Math.random();
 //random = random * 5000;
@@ -59,9 +59,53 @@
 //  this.style.display="none";
 //}
 
-/*** Box will show at a random time, between 0-5000 miliseconds in JQuery ***/
+/*** 3. Box will show at a random time, between 0-5000 miliseconds in JQuery ***/
 
-$(document).ready(function() {
+//$(document).ready(function() {
+//  
+//  var random = Math.random();
+//  random = random * 5000;
+//  random = Math.floor(random);
+//  
+//  setTimeout(function() {
+//    $("#box").show();
+//  }, random);
+//  
+//  $("#box").on('click', function() {
+//    $(this).hide();
+//  });
+//});
+
+/*** 4. Box will show at a random time, between 0-5000 miliseconds in JavaScript, and once clicked rehide the box for another random amount of time ***/
+
+// To do this we have to put the previous code in a function to make recalling a new box easy
+
+// showBox() will display a box after a random amount of time between 0-5000 miliseconds
+//function showBox() {
+//  
+//  var random = Math.random();
+//  random = random * 5000;
+//  random = Math.floor(random);
+//
+//  setTimeout(function() {
+//    document.getElementById("box").style.display="block";
+//  }, random);
+//}
+//
+//document.getElementById("box").onclick = function() {
+//  this.style.display="none";
+//  showBox(); 
+//  // once clicked show another box in random amount of time
+//}
+//
+//showBox(); 
+// need to call function outside for the inital box to appear when the browser loads
+
+/*** 4. Box will show at a random time, between 0-5000 miliseconds in JQuery, and once clicked rehide the box for another random amount of time ***/
+
+// Same function as above ^^, but a lot shorter
+
+function showBox() {
   
   var random = Math.random();
   random = random * 5000;
@@ -70,11 +114,22 @@ $(document).ready(function() {
   setTimeout(function() {
     $("#box").show();
   }, random);
-  
+}
+
+$(document).ready(function() {
   $("#box").on('click', function() {
-    $(this).hide();
+    $("#box").hide();
+    showBox();
   });
 });
+
+showBox();
+
+
+
+
+
+
 
 
 
