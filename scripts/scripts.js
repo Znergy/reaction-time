@@ -1,4 +1,16 @@
-/*** 1. Box hide/show, 'this' keyword in JavaScript ***/
+/*
+* Application: Reaction Time
+* Programmer: Ryan Jones
+* Version: 02/14/2017
+*/
+
+/* Important Notes *
+* 1) JavaScript code is marked with an 'a' (1a, 2a, etc)
+* 2) JQuery code is marked with a 'b' (1b, 2b, etc)
+*/
+
+
+/*** 1a. Box hide/show, 'this' keyword in JavaScript ***/
 
 //document.getElementById("box").onclick = function() {
 //  var showing = true;
@@ -11,7 +23,7 @@
 //  }
 //}
 
-/*** 1. Box hide/show, 'this' keyword in JQuery ***/
+/*** 1b. Box hide/show, 'this' keyword in JQuery ***/
 
 //$(document).ready(function() {
 //  $("div#box").on('click', function() {
@@ -26,7 +38,7 @@
 //  });
 //});
 
-/*** 2. Box hide after 3 secs in JavaScript ***/
+/*** 2a. Box hide after 3 secs in JavaScript ***/
 
 //document.getElementById("box").onclick = function () {
 //  setTimeout(function() {
@@ -34,7 +46,7 @@
 //  }, 3000);
 //}
 
-/*** 2. Box hide after 3 secs in JQuery ***/
+/*** 2b. Box hide after 3 secs in JQuery ***/
 
 //$(document).ready(function() {
 //  $("#box").on('click', function() {
@@ -44,7 +56,7 @@
 //  });
 //});
 
-/*** 3. Box will show at a random time, between 0-5000 miliseconds in JavaScript ***/
+/*** 3a. Box will show at a random time, between 0-5000 miliseconds in JavaScript ***/
 
 //var random = Math.random();
 //random = random * 5000;
@@ -59,7 +71,7 @@
 //  this.style.display="none";
 //}
 
-/*** 3. Box will show at a random time, between 0-5000 miliseconds in JQuery ***/
+/*** 3b. Box will show at a random time, between 0-5000 miliseconds in JQuery ***/
 
 //$(document).ready(function() {
 //  
@@ -76,7 +88,7 @@
 //  });
 //});
 
-/*** 4. Box will show at a random time, between 0-5000 miliseconds in JavaScript, and once clicked rehide the box for another random amount of time ***/
+/*** 4a. Box will show at a random time, between 0-5000 miliseconds in JavaScript, and once clicked rehide the box for another random amount of time ***/
 
 // To do this we have to put the previous code in a function to make recalling a new box easy
 
@@ -101,33 +113,86 @@
 //showBox(); 
 // need to call function outside for the inital box to appear when the browser loads
 
-/*** 4. Box will show at a random time, between 0-5000 miliseconds in JQuery, and once clicked rehide the box for another random amount of time ***/
+/*** 4b. Box will show at a random time, between 0-5000 miliseconds in JQuery, and once clicked rehide the box for another random amount of time ***/
 
 // Same function as above ^^, but a lot shorter
 
+//function showBox() {
+//  
+//  var random = Math.random();
+//  random = random * 5000;
+//  random = Math.floor(random);
+//  
+//  setTimeout(function() {
+//    $("#box").show();
+//  }, random);
+//}
+//
+//$(document).ready(function() {
+//  $("#box").on('click', function() {
+//    $("#box").hide();
+//    showBox();
+//  });
+//});
+//
+//showBox();
+
+/*** 5a. this will build on our prior code and track how quickly the user taps the box, using a method called Date.now() ***/
+
+//var timeCreated; var timeClicked; var userSpeed;
+//
+//function showBox() {
+//  
+//  var random = Math.random();
+//  random = random * 5000;
+//  random = Math.floor(random);
+//
+//  setTimeout(function() {
+//    document.getElementById("box").style.display="block";
+//    timeCreated = Date.now(); // this tracks initial creation
+//  }, random);
+//}
+//
+//document.getElementById("box").onclick = function() {
+//  this.style.display="none";
+//  timeClicked = Date.now(); // this tracks user click time
+//  userSpeed = (timeClicked - timeCreated) / 1000;
+//  // saves time difference and changes from milisecs to secs
+//  
+//  alert(userSpeed); // prints time to screen
+//  showBox();
+//}
+//
+//showBox();
+
+/*** 5b. this will build on our prior code and track how quickly the user taps the box, using a method called Date.now() ***/
+
+var timeCreated, timeClicked, userSpeed;
+
 function showBox() {
-  
   var random = Math.random();
   random = random * 5000;
   random = Math.floor(random);
-  
+
   setTimeout(function() {
     $("#box").show();
+    timeCreated = Date.now();
   }, random);
 }
 
 $(document).ready(function() {
   $("#box").on('click', function() {
-    $("#box").hide();
+    $(this).hide();
+    
+    timeClicked = Date.now();
+    
+    userSpeed = (timeCreated - timeClicked) / 1000;
+    alert(userSpeed);
     showBox();
   });
 });
 
 showBox();
-
-
-
-
 
 
 
