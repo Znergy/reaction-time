@@ -231,6 +231,11 @@ function showBox() {
   var random = Math.random();
   random = random * 5000;
   random = Math.floor(random);
+  
+  // this will change the color to a random color
+  var randColor = getRandomColor();
+  
+  $("#box").css("background-color", randColor);
 
   setTimeout(function() {
     $("#box").show();
@@ -238,7 +243,19 @@ function showBox() {
   }, random);
 }
 
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 $(document).ready(function() {
+  var randomColor = getRandomColor();
+  $("#box").css("background-color", randomColor);
+  
   $("#box").on('click', function() {
     $(this).hide();
     
