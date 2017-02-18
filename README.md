@@ -4,7 +4,7 @@
 #### By: Ryan Jones
 
 ## Description:
-Reaction Time, is a game I built using JavaScript and JQuery. At a random time between 0-5 secs a square will appear, the goal of the game is to click the square as fast as possible.
+Reaction Time, is a game I built using JavaScript and JQuery. At a random time between 0-5 secs a square will appear, the goal of the game is to click the square as fast as possible. Here is a link to the gh-pages, https://znergy.github.io/track-suggester/
 
 ## Known Bugs
 There is no known bugs, please let me know if you find any.
